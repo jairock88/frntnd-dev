@@ -3,10 +3,10 @@
 ![Final challenge ](https://i.ytimg.com/vi/5C0kiJ5OeHg/maxresdefault.jpg)
 
 members:
-Néstor Chaparro
-Jose M. Hernandez
-Arisbeth Martínez
-Jairo Bermejo 
+Néstor Chaparro,
+Jose M. Hernandez,
+Arisbeth Martínez,
+Jairo Bermejo. 
 
 
 Skills:  JS / HTML / CSS
