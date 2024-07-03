@@ -4,7 +4,7 @@
 
 members:
 Néstor Chaparro
-Antonio Magana
+Jose M. Hernandez
 Arisbeth Martínez
 Jairo Bermejo 
 
