@@ -1,3 +1,4 @@
+/*
 let userLogin = document.getElementById('exampleInputUser1')
 let emailLogin = document.getElementById('exampleInputEmail1')
 let passwordLogin = document.getElementById('exampleInputPassword1')
@@ -19,7 +20,7 @@ const usersLoginInput = () => {
                     }
                     console.log(users);
 }
-
+*/
 // import { createNavbar } from "./modules/components.js";
 /*let token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTmVzdG9yIENoYXBhcnJvIiwiZW1haWwiOiJ6b25pY25lc3NAaG90bWFpbC5jb20iLCJwYXNzd29yZCI6IjEyMyJ9._PXPwmX32RxsSCN4MVJBRxCykAEyfmdRuDocSV930iA*/
