@@ -18,17 +18,30 @@ const loginButton = document.querySelector('.btn-login');
 //     }
 // };
 
+// const validateSession = () => {
+//     let logoutButton = document.getElementById('logout')
+//     hasToken = localStorage.getItem('token');
+//     if(hasToken) {
+//         //loginCard.classList.remove('d-none');
+//         logoutButton.classList.remove('d-none');
+//     // } else if (hasToken) {
+//     } else {
+//         logoutButton.classList.add('d-none');
+//     }
+// };
+
 const validateSession = () => {
-    let logoutButton = document.getElementById('logout')
-    hasToken = localStorage.getItem('token');
-    if(!hasToken) {
-        //loginCard.classList.remove('d-none');
-        logoutButton.classList.remove('d-none');
-    // } else if (hasToken) {
+    let logoutButton = document.getElementById('logout');
+    let hasToken = localStorage.getItem('token');
+
+    if (hasToken) {
+        logoutButton.classList.remove('d-none'); 
     } else {
         logoutButton.classList.add('d-none');
     }
 };
+validateSession();
+
 
 // Agregar un evento de clic al botón de inicio de sesión
 loginButton.addEventListener('click', () => {
