@@ -4,17 +4,29 @@ console.log(hasToken);
 
 const loginButton = document.querySelector('.btn-login');
 
+// const validateSession = () => {
+//     let loginCard = document.getElementById('login-card');
+//     let logoutButton = document.getElementById('logout');
+//     hasToken = localStorage.getItem('token');
+//     if(!hasToken) {
+//         loginCard.classList.remove('d-none');
+//         logoutButton.classList.add('d-none');
+//     // } else if (hasToken) {
+//     } else {
+//         loginCard.classList.add('d-none');
+//         logoutButton.classList.remove('d-none');
+//     }
+// };
+
 const validateSession = () => {
-    let loginCard = document.getElementById('login-card');
-    let logoutButton = document.getElementById('logout');
+    let logoutButton = document.getElementById('logout')
     hasToken = localStorage.getItem('token');
     if(!hasToken) {
-        loginCard.classList.remove('d-none');
-        logoutButton.classList.add('d-none');
+        //loginCard.classList.remove('d-none');
+        logoutButton.classList.remove('d-none');
     // } else if (hasToken) {
     } else {
-        loginCard.classList.add('d-none');
-        logoutButton.classList.remove('d-none');
+        logoutButton.classList.add('d-none');
     }
 };
 
@@ -51,4 +63,3 @@ if (logoutButton) {
         logout();
     });
 };
-export { hasToken, validateSession, loginButton, logoutButton, logout };
