@@ -1,65 +1,36 @@
-let hasToken = localStorage.getItem('token')
+let hasToken = localStorage.getItem('token');
 console.log(hasToken);
 
-
+const logoutButton = document.getElementById('logout');
 const loginButton = document.querySelector('.btn-login');
 
-const validateSession = () => {
-    let logoutButton = document.getElementById('logout');
-    let hasToken = localStorage.getItem('token');
-
+const manageLogoutBtn = () => {
     if (hasToken) {
         logoutButton.classList.remove('d-none'); 
     } else {
         logoutButton.classList.add('d-none');
     }
 };
-validateSession();
 
+manageLogoutBtn();
 
-// Agregar un evento de clic al botón de inicio de sesión
 loginButton.addEventListener('click', () => {
-    validateSession(); 
-});
-
-validateSession();
-loginButton.addEventListener('click', () => {
-    let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+    let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
     localStorage.setItem('token', token);
-    window.location.href = 'index.html';
-    validateSession();
+    hasToken = localStorage.getItem('token'); // Actualizar hasToken
+    manageLogoutBtn();
+    //window.location.href = '../index.html';
 });
 
-// funcion para remover token, simular cierre de sesion
+// Función para remover token, simular cierre de sesión
 const logout = () => {
     localStorage.removeItem('token');
-    hasToken = localStorage.getItem('token');
-
-    validateSession();
+    hasToken = localStorage.getItem('token'); // Actualizar hasToken
+    manageLogoutBtn();
 };
 
-// logout 
-// const logoutButton = document.querySelector('.btn-logout');
-// if (logoutButton) {
-//     logoutButton.addEventListener('click', () => {
-//         logout();
-//     });
-// };
-const manageSession = () => {
-    let logoutButton = document.getElementById('logout');
-    let hasToken = localStorage.getItem('token');
-
-    // Validar sesión y mostrar/ocultar botón de cerrar sesión
-    if (hasToken) {
-        logoutButton.classList.remove('d-none'); 
-    } else {
-        logoutButton.classList.add('d-none');
-    }
-
-    // Configurar evento de clic para el botón de cerrar sesión
+if (logoutButton) {
     logoutButton.addEventListener('click', () => {
-        // Función para cerrar sesión
-        localStorage.removeItem('token'); // Eliminar el token del localStorage
-        manageSession(); // Validar sesión después de cerrar sesión
+        logout();
     });
-};
+}
