@@ -2,21 +2,47 @@ let hasToken = localStorage.getItem('token')
 console.log(hasToken);
 
 
-const loginButton = document.querySelector('.btn-login');
+const loginButton = document.getElementById('login')
+
+// const validateSession = () => {
+//     let loginCard = document.getElementById('login-card');
+//     let logoutButton = document.getElementById('logout');
+//     hasToken = localStorage.getItem('token');
+//     if(!hasToken) {
+//         loginCard.classList.remove('d-none');
+//         logoutButton.classList.add('d-none');
+//     // } else if (hasToken) {
+//     } else {
+//         loginCard.classList.add('d-none');
+//         logoutButton.classList.remove('d-none');
+//     }
+// };
+
+// const validateSession = () => {
+//     let logoutButton = document.getElementById('logout')
+//     hasToken = localStorage.getItem('token');
+//     if(hasToken) {
+//         //loginCard.classList.remove('d-none');
+//         logoutButton.classList.remove('d-none');
+//     // } else if (hasToken) {
+//     } else {
+//         logoutButton.classList.add('d-none');
+//     }
+// };
+
 
 const validateSession = () => {
-    let loginCard = document.getElementById('login-card');
     let logoutButton = document.getElementById('logout');
-    hasToken = localStorage.getItem('token');
-    if(!hasToken) {
-        loginCard.classList.remove('d-none');
-        logoutButton.classList.add('d-none');
-    // } else if (hasToken) {
+    let hasToken = localStorage.getItem('token');
+
+    if (hasToken) {
+        logoutButton.classList.remove('d-none'); 
     } else {
-        loginCard.classList.add('d-none');
-        logoutButton.classList.remove('d-none');
+        logoutButton.classList.add('d-none');
     }
 };
+validateSession();
+
 
 // Agregar un evento de clic al botón de inicio de sesión
 loginButton.addEventListener('click', () => {
@@ -51,4 +77,3 @@ if (logoutButton) {
         logout();
     });
 };
-export { hasToken, validateSession, loginButton, logoutButton, logout };
