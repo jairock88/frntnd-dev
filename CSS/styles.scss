@@ -9,6 +9,44 @@ $mediumGray: #404040;
 $purple: #2f3ab2;
 $lightPurple: #3b49df;
 
+// Footer
+.footer {
+    background-color: #e5e5e5;
+    font-size: 0.875rem;
+    padding: 3rem;
+    margin-top: 5rem;
+
+    &__legals {
+        color: #404040;
+        margin: 0;
+    }
+
+    &__link {
+        color: #3b49df;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__nav-links {
+        margin: 0;
+    }
+
+    &__nav-link {
+        list-style: none;
+        display: flex;
+        align-items: center;
+
+        &:not(:last-child)::after {
+            content: '•';
+            font-size: 1.5rem;
+            padding: 0 0.5rem;
+        }
+    }
+}
+
 // Styles aside 
 #list-post-tags {
     .card {
@@ -111,7 +149,7 @@ $lightPurple: #3b49df;
         .text {
             color: $lightBlack;
             font-size: 1rem;
-            
+
         }
     }
 
@@ -119,6 +157,7 @@ $lightPurple: #3b49df;
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 1.25rem;
+
         .tag {
             border-radius: 0.5rem;
             padding: 0.25rem;
@@ -126,33 +165,39 @@ $lightPurple: #3b49df;
             background-color: transparent;
             border: 1px solid transparent;
             cursor: pointer;
+
             &:hover {
-               background-color: rgba(86, 39, 101, 0.10);
-               border: 1px solid rgba(86, 39, 101, 0.4);
+                background-color: rgba(86, 39, 101, 0.10);
+                border: 1px solid rgba(86, 39, 101, 0.4);
             }
         }
     }
 }
 
 #card-author {
-    border-top: 44px solid $lightBlack!important;
+    border-top: 44px solid $lightBlack !important;
     padding: 1rem 1rem 2rem;
+
     .btn-primary {
-        background-color: $lightPurple!important;
-        border: none!important;
+        background-color: $lightPurple !important;
+        border: none !important;
+
         &:hover {
-            background-color: $purple!important;
+            background-color: $purple !important;
         }
     }
+
     .content-info-author {
         display: flex;
         align-items: center;
         margin-bottom: 1.5rem;
+
         .image-user {
             width: 40px;
             height: 40px;
             border-radius: 20px;
         }
+
         .text {
             margin: 0;
             font-weight: 700;
@@ -168,9 +213,11 @@ $lightPurple: #3b49df;
         .content {
             padding: 2rem 4rem;
         }
+
         .post-title {
             font-size: 3rem;
         }
+
         .post-text {
             .text {
                 overflow-wrap: break-word;
