@@ -1,40 +1,82 @@
-// Obtener elementos del DOM
-const emailInput = document.getElementById('email');
-const passwordInput = document.getElementById('password');
-const loginButton = document.querySelector('.btn-login ');
+// // let hasToken = localStorage.getItem('token');
+// // // console.log(hasToken);
 
-// Función para manejar el inicio de sesión
-const handleLogin = (event) => {
-  event.preventDefault(); // Prevenir el envío del formulario por defecto
+// // const login = document.getElementById('loginForm');
 
-  // Obtener valores de los campos y trim para eliminar espacios en blanco
-//   const email = emailInput.value.trim();
-//   const password = passwordInput.value.trim();
+// // login.addEventListener("click", () => {
+// //     //event.preventDefault();
+// //     let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+// //     localStorage.setItem("token", token);
+// //     //window.location.href = '../index.html';
+// // });
 
-  // Validar si ambos campos están llenos
-  if (email && password) {
-    // Simulación de generación de token (puedes ajustar esto según tu lógica real)
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFkbWluIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+// const simulateLogin = () => {
+//     const loginButton = document.getElementById('loginForm'); // Assuming there's a login button with this ID
+//     loginButton.addEventListener('click', () => {
+//         const token = "abcdefghijk"; // This should be replaced with actual token generation logic
+//         localStorage.setItem('authToken', token); // Saving the token to localStorage
+//         alert('Login correcto'); // Feedback to the user
+//     });
+// }
+// simulateLogin();
 
-    // Guardar el token en localStorage
-    localStorage.setItem('token', token);
+let hasToken = localStorage.getItem('token')
+console.log(hasToken);
 
-    // Redireccionar al usuario a index.html
-    window.location.href = 'index.html';
-  } else {
-    // Manejar caso donde no se han llenado ambos campos
-    alert('Por favor, complete los campos de email y contraseña.');
-  }
+
+const loginButton = document.querySelector('.btn-login');
+
+const validateSession = () => {
+    let loginCard = document.getElementById('login-card');
+    let logoutButton = document.getElementById('logoutHome');
+    let avatarLogin = document.getElementById('avatar-login');
+    let loginNav = document.getElementById('loginBtnNav');
+    hasToken = localStorage.getItem('token');
+    if(!hasToken) {
+        loginCard.classList.remove('d-none');
+        logoutButton.classList.add('d-none');
+        avatarLogin.classList.add('d-none');
+        loginNav.classList.remove('d-none');
+    // } else if (hasToken) {
+    } else {
+        loginCard.classList.add('d-none');
+        logoutButton.classList.remove('d-none');
+        avatarLogin.classList.remove('d-none');
+        loginNav.classList.add('d-none');
+    }
 };
 
-// Event Listener para el evento submit del formulario
-document.getElementById('loginForm').addEventListener('submit', handleLogin);
-
-// Event Listener para validar campos y habilitar/deshabilitar botón de inicio de sesión
-document.getElementById('loginForm').addEventListener('input', () => {
-  // Verificar si ambos campos tienen contenido
-  const isValid = emailInput.value.trim() && passwordInput.value.trim();
-
-  // Habilitar/deshabilitar el botón de inicio de sesión según la validación
-  loginButton.disabled = !isValid;
+// Agregar un evento de clic al botón de inicio de sesión
+loginButton.addEventListener('click', () => {
+    validateSession(); // Validar la sesión al hacer clic en el botón de inicio de sesión
 });
+
+// Llamada inicial para validar la sesión al cargar la página
+validateSession();
+loginButton.addEventListener('click', () => {
+    let token = 'eyJhbGciOiJIUzI1NiIs5c'
+    localStorage.setItem('token', token);
+    //window.location.href = 'index.html';
+    validateSession();
+});
+
+// funcion para remover token, simular cierre de sesion
+const logout = () => {
+  
+    localStorage.removeItem('token');
+    // Actualizar hasToken después de eliminar el token
+    hasToken = localStorage.getItem('token');
+
+
+    validateSession();
+};
+
+// logout 
+const logoutButton = document.getElementById('logoutHome');
+if (logoutButton) {
+    logoutButton.addEventListener('click', () => {
+        logout();
+    });
+};
+
+//export { hasToken, validateSession, loginButton, logoutButton, logout };
