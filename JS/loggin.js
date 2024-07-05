@@ -1,28 +1,5 @@
-// // let hasToken = localStorage.getItem('token');
-// // // console.log(hasToken);
-
-// // const login = document.getElementById('loginForm');
-
-// // login.addEventListener("click", () => {
-// //     //event.preventDefault();
-// //     let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
-// //     localStorage.setItem("token", token);
-// //     //window.location.href = '../index.html';
-// // });
-
-// const simulateLogin = () => {
-//     const loginButton = document.getElementById('loginForm'); // Assuming there's a login button with this ID
-//     loginButton.addEventListener('click', () => {
-//         const token = "abcdefghijk"; // This should be replaced with actual token generation logic
-//         localStorage.setItem('authToken', token); // Saving the token to localStorage
-//         alert('Login correcto'); // Feedback to the user
-//     });
-// }
-// simulateLogin();
-
-let hasToken = localStorage.getItem('token')
+let hasToken = localStorage.getItem('token');
 console.log(hasToken);
-
 
 const loginButton = document.querySelector('.btn-login');
 
@@ -37,7 +14,6 @@ const validateSession = () => {
         logoutButton.classList.add('d-none');
         avatarLogin.classList.add('d-none');
         loginNav.classList.remove('d-none');
-    // } else if (hasToken) {
     } else {
         loginCard.classList.add('d-none');
         logoutButton.classList.remove('d-none');
@@ -54,7 +30,7 @@ loginButton.addEventListener('click', () => {
 // Llamada inicial para validar la sesión al cargar la página
 validateSession();
 loginButton.addEventListener('click', () => {
-    let token = 'eyJhbGciOiJIUzI1NiIs5c'
+    let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
     localStorage.setItem('token', token);
     //window.location.href = 'index.html';
     validateSession();
@@ -62,12 +38,9 @@ loginButton.addEventListener('click', () => {
 
 // funcion para remover token, simular cierre de sesion
 const logout = () => {
-  
     localStorage.removeItem('token');
     // Actualizar hasToken después de eliminar el token
     hasToken = localStorage.getItem('token');
-
-
     validateSession();
 };
 
