@@ -13,7 +13,7 @@ const getListPost = async () => {
     }
     return accum;
   }, {});
-  console.log(reorderPost, "reorderPost");
+
   for (const tag in reorderPost) {
     renderPostsByTag(tag, reorderPost[tag]);
   }
