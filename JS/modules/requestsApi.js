@@ -11,4 +11,23 @@ const getData = async () => {
   return postArray;
 };
 
-export { getData };
+const createPost = async (postObject) => {
+  let response = await fetch(`${BASE_URL}/Post/.json`, {
+    method: "POST",
+    body: JSON.stringify(postObject),
+  });
+  let data = await response.json();
+
+  return data;
+};
+
+const getUser = async () => {
+  let response = await fetch(`${BASE_URL}/Users/.json`);
+  let data = await response.json();
+  let keysArrays = Object.keys(data);
+  let userArray = keysArrays.map((user) => ({ ...data[user], user }));
+
+  return userArray;
+};
+
+export { getData, getUser, createPost };
