@@ -1,4 +1,4 @@
-import { createPost, getUser } from "./modules/requestsApi";
+import { createPost, getUser } from "./modules/requestsApi.js";
 
 let postObject = {};
 
@@ -16,7 +16,6 @@ infoPosts.forEach((fields) => {
     console.log(postObject);
   });
 });
-console.log(infoPosts);
 
 tagsInput.addEventListener("keydown", (event) => {
   if (event.key === " ") {
@@ -24,7 +23,7 @@ tagsInput.addEventListener("keydown", (event) => {
     let formattedWords = words.map((word) =>
       word.startsWith("#") ? word : `#${word}`
     );
-    event.target.value = formattedWords.join(" ") + " ";
+    event.target.value = formattedWords.join(" ");
 
     postObject["Tags"] = formattedWords.filter((word) => word.startsWith("#"));
   }
