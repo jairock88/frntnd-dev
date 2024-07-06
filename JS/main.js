@@ -1,7 +1,10 @@
 import { getData } from "./modules/requestsApi.js";
+import { renderAllPosts } from "./modules/components.js";
+
+let posts = [];
 
 const getListPost = async () => {
-  let posts = await getData();
+  posts = await getData();
   let reorderPost = posts.reduce((accum, current) => {
     let tags = current.Tags;
     if (Array.isArray(tags)) {
@@ -47,3 +50,14 @@ const renderPostsByTag = (tag, posts) => {
     list.append(dataTag);
   });
 };
+
+const getUsers = async () => {
+  let containerListPost = document.getElementById("main-post");
+  posts = await getData();
+  posts.forEach((post) => {
+    let postCard = renderAllPosts(post);
+    containerListPost.append(postCard);
+  });
+};
+
+getUsers();
