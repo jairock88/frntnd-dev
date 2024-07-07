@@ -62,66 +62,85 @@ const getUsers = async () => {
 
 getUsers();
 
+//array de objetos
+let postsArray = [];
+
+// Función para obtener datos y almacenarlos en postsArray
+const loadData = async () => {
+  postsArray = await getData();
+  renderPosts(postsArray); // Renderiza todos los posts al cargar los datos
+};
+
+// Función para renderizar los posts
+const renderPosts = (posts) => {
+  const container = document.getElementById("main-post");
+  container.textContent = "";
+
+  posts.forEach((post) => {
+    let postElement = renderAllPosts(post);
+    container.append(postElement);
+  });
+};
+
 // Filtrar por reacciones
-const filterPostByReaction = async () => {
-  let post = await getData();
-  post.sort((min, max) => max.Reactions - min.Reactions); //ordenar post de mayor reaction a menor
-
-  //selecionar el id del html donde se insertaran los post filtrados
-  const container = document.getElementById("main-post");
-  container.textContent = "";
-
-  //iterar cada post y crear su card
-  post.forEach((post) => {
-    let postElement = renderAllPosts(post);
-    container.appendChild(postElement);
-  });
-
-  return post;
+const filterPostByReaction = () => {
+  let sortedPosts = [...postsArray].sort(
+    (min, max) => max.Reactions - min.Reactions
+  );
+  renderPosts(sortedPosts);
 };
 
-//filtrar por fecha
-const filterPostByDate = async () => {
-  let post = await getData();
-  post.sort((min, max) => new Date(max.Date) - new Date(min.Date)); //ordenar post por fecha
-
-  //selecionar el id del html donde se insertaran los post filtrados
-  const container = document.getElementById("main-post");
-  container.textContent = "";
-
-  //iterar cada post y crear su card
-  post.forEach((post) => {
-    let postElement = renderAllPosts(post);
-    container.appendChild(postElement);
-  });
-
-  return post;
+// Filtrar por fecha
+const filterPostByDate = () => {
+  let sortedPosts = [...postsArray].sort(
+    (min, max) => new Date(max.Date) - new Date(min.Date)
+  );
+  renderPosts(sortedPosts);
 };
 
-const filterPostByRelevant = async () => {
-  let post = await getData();
-  post.sort((min, max) => max.Relevant - min.Relevant); //ordenar post de mayor relavant a menor
-
-  //selecionar el id del html donde se insertaran los post filtrados
-  const container = document.getElementById("main-post");
-  container.textContent = "";
-
-  //iterar cada post y crear su card
-  post.forEach((post) => {
-    let postElement = renderAllPosts(post);
-    container.appendChild(postElement);
-  });
-
-  return post;
+// Filtrar por relevancia
+const filterPostByRelevant = () => {
+  let sortedPosts = [...postsArray].sort(
+    (min, max) => max.Relevant - min.Relevant
+  );
+  renderPosts(sortedPosts);
 };
 
-//listener de los botones, al dar click en un boton activa su funcion correspondiente
-let filterByRelevan = document
+// Listener de los botones, al dar click en un boton activa su funcion correspondiente
+document
   .getElementById("filter-relevant")
   .addEventListener("click", filterPostByRelevant);
-let filterByDate = document
+document
   .getElementById("filter-latest")
   .addEventListener("click", filterPostByDate);
-let filterByReaction = document
+document
   .getElementById("filter-top")
   .addEventListener("click", filterPostByReaction);
+
+// Cargar datos al cargar la página
+window.onload = loadData;
+
+/* Selección de DOM */
+let searchBar = document.getElementById("searchBar");
+
+const printPosts = async (postsArray) => {
+  let postsContainer = document.getElementById("main-post");
+  postsContainer.textContent = "";
+
+  postsArray.forEach((post) => {
+    const postElement = renderAllPosts(post);
+    postsContainer.append(postElement);
+  });
+};
+
+/* Listeners */
+searchBar.addEventListener("keyup", (event) => {
+  let query = event.target.value.toLowerCase();
+  let result = postsArray.filter((post) =>
+    `${post.Title}`.toLowerCase().includes(query)
+  );
+  printPosts(result);
+});
+
+/* Inicialización */
+document.addEventListener("DOMContentLoaded", loadData);
