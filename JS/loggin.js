@@ -8,16 +8,19 @@ const validateSession = () => {
   let logoutButton = document.getElementById("logoutHome");
   let avatarLogin = document.getElementById("avatar-login");
   let loginNav = document.getElementById("loginBtnNav");
+  let createPostBtn = document.getElementById("createPost");
   hasToken = localStorage.getItem("token");
   if (!hasToken) {
     loginCard.classList.remove("d-none");
     logoutButton.classList.add("d-none");
     avatarLogin.classList.add("d-none");
+    createPostBtn.classList.add("d-none"); //
     loginNav.classList.remove("d-none");
   } else {
     loginCard.classList.add("d-none");
     logoutButton.classList.remove("d-none");
     avatarLogin.classList.remove("d-none");
+    createPostBtn.classList.remove("d-none"); //
     loginNav.classList.add("d-none");
   }
 };
