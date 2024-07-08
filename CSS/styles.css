@@ -188,7 +188,7 @@
   color: #2f3ab2;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 576px) {
   #content-post .content {
     padding: 2rem 4rem;
   }
