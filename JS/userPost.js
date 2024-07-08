@@ -63,5 +63,7 @@ buttonSave.addEventListener("click", async () => {
 
     form.reset();
     postObject = {};
+
+    window.location.href = "/index.html";
   }
 });

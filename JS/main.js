@@ -44,7 +44,7 @@ const renderPostsByTag = (tag, posts) => {
   posts.forEach((post) => {
     const dataTag = document.createElement("li");
     const link = document.createElement("a");
-    link.setAttribute("href", `views/post-detail.html?postId=${post.key}`);
+    link.setAttribute("href", `VIEWS/post-detail.html?postId=${post.key}`);
     link.textContent = post.Title;
     dataTag.append(link);
     list.append(dataTag);
