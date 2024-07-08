@@ -113,7 +113,7 @@ const renderAllPosts = (post) => {
   let newDate = formatDate(Date);
 
   let postContent = document.createElement("a");
-  postContent.setAttribute("href", `views/post-detail.html?postId=${post.key}`);
+  postContent.setAttribute("href", `VIEWS/post-detail.html?postId=${post.key}`);
   postContent.classList.add(..."main-post card text-start mb-2".split(" "));
 
   let divImage = document.createElement("div");

@@ -12,17 +12,17 @@
 
 <body class="bg-body-tertiary">
   <!-- NAV-BAR -->
-  <nav class="navbar sticky-top bg-white shadow-sm border">
-    <div class="container">
+  <nav class="navbar sticky bg-white shadow-sm border">
+    <div class="container justify-content-evenly">
       <!-- DIV .INPUT-BAR -->
-      <div class="input-bar w-75">
+      <div class="input-bar col-8">
         <a class="navbar-brand" href="#">
           <img class="border border-3 border-light rounded" src="./IMG/dev-black.png" alt="DEV" width="49"
             height="45" />
         </a>
-        <input id="searchBar" type="text" class="border rounded p-2 col-8" placeholder="Search..." />
+        <input id="searchBar" type="text" class="border rounded p-2 col-9 sticky-top bg-white" placeholder="Search..." />
       </div>
-      <div class="d-flex justify-content-end">
+      <div class="col-4 d-flex justify-content-end">
         <!-- BOTON CREATE-POST -->
         <div class="create-post me-4">
           <button class="btn btn-outline-primary" id="createPost"
@@ -213,15 +213,15 @@
                 href="">
                 <img src="./IMG/icons8-eyes-30.png" alt="">
                 Terms of use</a></li>
-            <div class="other-social-buttons d-flex mt-3">
-              <label for=""><img class="x-button-logo m-2" src="./IMG/icons8-x-30.png" alt="X" /></label>
-              <label for=""><img class="facebook-button-logo m-2" src="./IMG/icons8-facebook-30.png"
+            <div class="other-social-buttons mt-3 d-flex justify-content-between gap-3">
+              <label for=""><img class="x-button-logo" src="./IMG/icons8-x-30.png" alt="X" /></label>
+              <label for=""><img class="facebook-button-logo" src="./IMG/icons8-facebook-30.png"
                   alt="facebook" /></label>
-              <label for=""><img class="github-button-logo m-2" src="./IMG/icons8-github-30.png" alt="github" /></label>
-              <label for=""><img class="instagram-button-logo m-2" src="./IMG/icons8-instagram-30.png"
+              <label for=""><img class="github-button-logo" src="./IMG/icons8-github-30.png" alt="github" /></label>
+              <label for=""><img class="instagram-button-logo" src="./IMG/icons8-instagram-30.png"
                   alt="instagram" /></label>
-              <label for=""><img class="twitch-button-logo m-2" src="./IMG/icons8-twitch-30.png" alt="twitch" /></label>
-              <label for=""><img class="mastodon-button-logo m-2" src="./IMG/icons8-mastodon-32.png"
+              <label for=""><img class="twitch-button-logo" src="./IMG/icons8-twitch-30.png" alt="twitch" /></label>
+              <label for=""><img class="mastodon-button-logo" src="./IMG/icons8-mastodon-32.png"
                   alt="mastodon" /></label>
             </div>
           </ul>
@@ -242,6 +242,23 @@
             <!-- <h4 id="scrollspyHeading5">Fifth heading</h4> -->
             <p>#myTags</p>
 
+          </div>
+        </div>
+        <!-- CARD DEV COMMUNITY -->
+        <div class="dev-community card p-3">
+          <div class="content-text-community d-flex justify-content-between">
+          <div class="text-community text-start">
+            <p>DEV Community</p>
+          </div>
+          <div class="ellipse-logo-button">
+            <label for=""><img src="./IMG/icons8-ellipsis-30.png" alt="" width="15px"></label>
+          </div>
+        </div>
+          <div class="text-description-card text-start">
+            <h4>Easiest way to help the DEV community deel more like a community?</h4>
+          </div>
+          <div class="text-low-card text-start">
+            <p>Head over to our <a href="">Welcome Thread</a> greet some new DEV members!</p>
           </div>
         </div>
       </div>
