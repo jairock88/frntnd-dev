@@ -1,14 +1,23 @@
-const BASE_URL = "https://dsfeq4-default-rtdb.firebaseio.com";
+const BASE_URL = "https://bcknd-chal.onrender.com";
 
 const getData = async () => {
-  let response = await fetch(`${BASE_URL}/Post/.json`);
+  let response = await fetch(`${BASE_URL}/post`);
   let data = await response.json();
-  let keysArray = Object.keys(data);
-  let postArray = keysArray.map((key) => ({
-    ...data[key],
-    key,
-  }));
-  return postArray;
+
+  if (data.success) {
+    let posts = data.data.posts;
+    return posts.map((post) => ({
+      id: post._id,
+      title: post.title,
+      image: post.image,
+      body: post.body,
+      user: post.user,
+      createdAt: post.createdAt,
+      updatedAt: post.updatedAt,
+    }));
+  } else {
+    throw new Error("Failed to fetch posts");
+  }
 };
 
 const createPost = async (postObject) => {

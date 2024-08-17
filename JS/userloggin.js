@@ -1,31 +1,14 @@
-// let hasToken = localStorage.getItem('token')
-// console.log(hasToken);
-
-// const isLogged = () => {
-//     let thereToken = localStorage.getItem('token');
-//     return thereToken ? true : false;
-// }
-
-// const loginFormButton = document.getElementById('loginForm');
-
-// loginFormButton.addEventListener('click', () => {
-//     let token = 'eyJhbGciOiJIUzI1NiIs5c'
-//     localStorage.setItem('token', token);
-//     window.location.href = '../index.html';
-//     //validateSession();
-// });
 
 const loginFormButton = document.getElementById('loginForm');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 
-// Validar con Regex el formato de entrada
 const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 };
 
-loginFormButton.addEventListener('click', (event) => {
+loginFormButton.addEventListener('click', async (event) => {
     event.preventDefault();
     
     const email = emailInput.value.trim();
@@ -41,11 +24,30 @@ loginFormButton.addEventListener('click', (event) => {
         return;
     }
 
-    // Simulación de inicio de sesión 
-    let token = 'eyJhbGciOiJIUzI1NiIs5c';
-    localStorage.setItem('token', token);
-    window.location.href = '../index.html';
+    // Hacer la solicitud de login a la API
+    try {
+        const response = await fetch('https://bcknd-chal.onrender.com/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+
+        console.log("API Response:", data); // Agregar para verificar la respuesta
+
+        if (data.success) {
+            // Almacenar el token en el localStorage
+            localStorage.setItem('token', data.data.token);
+            console.log("Token Stored:", data.data.token); // Agregar para verificar el token almacenado
+            // Redirigir al usuario a la página principal
+            window.location.href = '../index.html';
+        } else {
+            alert("Login failed: " + data.message);
+        }
+    } catch (error) {
+        alert("An error occurred: " + error.message);
+    }
 });
-
-
-// export { hasToken, validateSession, loginButton, logoutButton, logout };
